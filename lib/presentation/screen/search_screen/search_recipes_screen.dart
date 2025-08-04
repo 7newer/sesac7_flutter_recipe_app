@@ -3,6 +3,7 @@ import 'package:flutter_recipe_app/presentation/screen/search_screen/search_reci
 
 import '../../../data/data_source/recipe_data_source_impl.dart';
 import '../../../data/repository/recipe_repository_impl.dart';
+import '../../component/bottomsheet/filter_search_bottom_sheet.dart';
 import '../../component/card/recipe_card.dart';
 import '../../component/inputfield/search_input_field.dart';
 
@@ -36,7 +37,15 @@ class SearchRecipesScreen extends StatelessWidget {
               ),
               const SizedBox(height: 10),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  showModalBottomSheet<void>(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return const FilterSearchBottomSheet(); // 이전에 만든 바텀시트 내용 위젯
+                    },
+                  );
+                  print('filtter');
+                },
                 child: Text('三'),
               ),
             ],

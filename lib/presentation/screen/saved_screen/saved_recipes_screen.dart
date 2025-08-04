@@ -4,7 +4,6 @@ import 'package:flutter_recipe_app/presentation/screen/saved_screen/saved_recipe
 import '../../../data/data_source/recipe_data_source_impl.dart';
 import '../../../data/repository/recipe_repository_impl.dart';
 import '../../component/card/recipe_card.dart';
-import '../../component/inputfield/input_field.dart';
 
 class SavedRecipesScreen extends StatelessWidget {
   final SavedRecipesViewModel savedRecipesViewModel;
