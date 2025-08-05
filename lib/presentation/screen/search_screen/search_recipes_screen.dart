@@ -4,13 +4,21 @@ import 'package:flutter_recipe_app/presentation/screen/search_screen/search_reci
 import '../../../data/data_source/recipe_data_source_impl.dart';
 import '../../../data/repository/recipe_repository_impl.dart';
 import '../../component/bottomsheet/filter_search_bottom_sheet.dart';
+import '../../component/bottomsheet/filter_search_bottom_sheet_state.dart';
 import '../../component/card/recipe_card.dart';
 import '../../component/inputfield/search_input_field.dart';
 
-class SearchRecipesScreen extends StatelessWidget {
+class SearchRecipesScreen extends StatefulWidget {
   final SearchRecipesViewModel searchRecipesViewModel;
 
   const SearchRecipesScreen({super.key, required this.searchRecipesViewModel});
+
+  @override
+  State<SearchRecipesScreen> createState() => _SearchRecipesScreenState();
+}
+
+class _SearchRecipesScreenState extends State<SearchRecipesScreen> {
+  FilterSearchBottomSheetState filterSearchState = const FilterSearchBottomSheetState();
 
   @override
   Widget build(BuildContext context) {
@@ -30,30 +38,36 @@ class SearchRecipesScreen extends StatelessWidget {
                   padding: const EdgeInsets.all(8.0),
                   child: SearchInputField(
                     onValueChange: (query) {
-                      searchRecipesViewModel.searchRecipes(query);
+                      widget.searchRecipesViewModel.searchRecipes(query);
                     },
                   ),
                 ),
               ),
               const SizedBox(height: 10),
               ElevatedButton(
-                onPressed: () {
-                  showModalBottomSheet<void>(
+                onPressed: () async {
+                  final result = await showModalBottomSheet<FilterSearchBottomSheetState> ( //showModalBottomSheet가 future함수임
                     context: context,
+                    isScrollControlled: true,
                     builder: (BuildContext context) {
-                      return const FilterSearchBottomSheet(); // 이전에 만든 바텀시트 내용 위젯
+                      // 현재 필터 filter_search_bottom_sheet.dart에 전달
+                      return FilterSearchBottomSheet(filterSearchState: filterSearchState);
                     },
                   );
-                  print('filtter');
+                  if (result != null) {
+                    setState(() {
+                      filterSearchState = result;
+                    });
+                  }
                 },
                 child: Text('三'),
               ),
             ],
           ),
           ListenableBuilder(
-            listenable: searchRecipesViewModel,
+            listenable: widget.searchRecipesViewModel,
             builder: (context, _ ) {
-              final state = searchRecipesViewModel.state;
+              final state = widget.searchRecipesViewModel.state;
               return Row(
                 children: [
                   Text(state.searchLabel),
@@ -65,9 +79,9 @@ class SearchRecipesScreen extends StatelessWidget {
           ),
           Expanded(
             child: ListenableBuilder(
-              listenable: searchRecipesViewModel,
+              listenable: widget.searchRecipesViewModel,
               builder: (context, child) {
-                final state = searchRecipesViewModel.state;
+                final state = widget.searchRecipesViewModel.state;
                 if (state.isLoading) {
                   return const Center(child: CircularProgressIndicator());
                 }
@@ -75,7 +89,7 @@ class SearchRecipesScreen extends StatelessWidget {
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
                   ),
-                  itemCount: searchRecipesViewModel.state.filteredRecipes.length,
+                  itemCount: widget.searchRecipesViewModel.state.filteredRecipes.length,
                   itemBuilder: (context, index) {
                     final recipe = state.filteredRecipes[index];
                     return RecipeCard(
