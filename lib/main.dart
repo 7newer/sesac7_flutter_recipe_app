@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_recipe_app/presentation/screen/main_screen.dart';
+
+import 'core/routing/router.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -10,14 +11,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: Colors.deepPurple,
-        ),
-      ),
-      home: MainScreen(),
+    return MaterialApp.router(
+      routerConfig: router,
     );
   }
 }

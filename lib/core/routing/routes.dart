@@ -3,4 +3,7 @@ abstract class Routes {
   static const String bookmark = '/bookmark';
   static const String notification = '/notification';
   static const String profile = '/profile';
+  static const String splash = '/splash';
+  static const String signInScreen = '/signInScreen';
+  static const String signUpScreen = '/signUpScreen';
 }

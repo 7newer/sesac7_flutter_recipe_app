@@ -12,11 +12,17 @@ import '../../data/model/ingredients.dart';
 import '../component/button/small_button.dart';
 import '../component/card/recipe_card.dart';
 
-class MainScreen extends StatelessWidget {
+class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
 
   @override
+  State<MainScreen> createState() => _MainScreenState();
+}
+
+class _MainScreenState extends State<MainScreen> {
+  @override
   Widget build(BuildContext context) {
+    int _selectedIndex = 0;
     return Scaffold(
       body: SingleChildScrollView(
         child: Center(
@@ -100,6 +106,40 @@ class MainScreen extends StatelessWidget {
           ),
         ),
       ),
+      bottomNavigationBar: BottomNavigationBar(
+        onTap: (int index) {
+          setState(() {
+            _selectedIndex = index;
+          });
+        },
+        selectedItemColor: Colors.blue,
+        items: const [
+          BottomNavigationBarItem(
+            backgroundColor: Colors.amber,
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.search),
+            label: 'Search',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.bookmark),
+            label: 'Bookmark',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: 'Profile',
+          ),
+        ],
+        currentIndex: 0,
+      ),
     );
   }
+}
+
+void main(){
+  runApp(MaterialApp(
+    home: MainScreen(),
+  ));
 }

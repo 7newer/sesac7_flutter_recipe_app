@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
+import '../../../core/routing/routes.dart';
 import '../../component/button/big_button.dart';
 
 class SplashScreen extends StatelessWidget {
@@ -51,7 +53,11 @@ class SplashScreen extends StatelessWidget {
                   ),
                   Column(
                     children: [
-                      Icon(Icons.restaurant_menu, size: 64, color: Colors.white),
+                      Icon(
+                        Icons.restaurant_menu,
+                        size: 64,
+                        color: Colors.white,
+                      ),
                       const SizedBox(height: 8),
                       Text(
                         '100K+ Premium Recipe',
@@ -66,7 +72,12 @@ class SplashScreen extends StatelessWidget {
                   const SizedBox(height: 48),
                   const Spacer(),
                   // 버튼
-                  BigButton(text: 'Start Cooking', onClick: (String ) {  },),
+                  BigButton(
+                    text: 'Start Cooking',
+                    onClick: (String) {
+                      context.push(Routes.signInScreen);
+                    },
+                  ),
                   const SizedBox(height: 48),
                 ],
               ),
@@ -76,12 +87,4 @@ class SplashScreen extends StatelessWidget {
       ),
     );
   }
-}
-
-void main() async {
-  runApp(
-    MaterialApp(
-      home: SplashScreen(),
-    ),
-  );
 }

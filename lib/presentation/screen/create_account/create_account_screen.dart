@@ -5,8 +5,8 @@ import 'package:go_router/go_router.dart';
 
 import '../../../core/routing/routes.dart';
 
-class LoginScreen extends StatelessWidget {
-  const LoginScreen({super.key});
+class CreateAccountScreen extends StatelessWidget {
+  const CreateAccountScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -18,10 +18,10 @@ class LoginScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              const SizedBox(height: 64.0),
+              const SizedBox(height: 30.0),
               // "Hello, Welcome Back!" 섹션
               const Text(
-                'Hello,',
+                'Create an account',
                 style: TextStyle(
                   fontSize: 32,
                   fontWeight: FontWeight.bold,
@@ -29,14 +29,22 @@ class LoginScreen extends StatelessWidget {
                 ),
               ),
               const Text(
-                'Welcome Back!',
+                'Let\'s help you set up your account,\nit won\'t take long.',
                 style: TextStyle(
-                  fontSize: 32,
+                  fontSize: 12,
                   fontWeight: FontWeight.bold,
                   color: Colors.black,
                 ),
               ),
-              const SizedBox(height: 48.0),
+              const SizedBox(height: 20.0),
+              InputField(
+                label: 'Name',
+                placeHolder: 'Enter Name',
+                value: '',
+                onValueChange: (String value) {},
+                width: double.infinity,
+              ),
+              const SizedBox(height: 20.0),
               InputField(
                 label: 'Email',
                 placeHolder: 'Enter Email',
@@ -44,15 +52,33 @@ class LoginScreen extends StatelessWidget {
                 onValueChange: (String value) {},
                 width: double.infinity,
               ),
-              const SizedBox(height: 24.0),
+              const SizedBox(height: 20.0),
               InputField(
-                label: 'Email',
-                placeHolder: 'Enter Email',
+                label: 'Password',
+                placeHolder: 'Enter Password',
+                value: '',
+                onValueChange: (String value) {},
+                width: double.infinity,
+              ),
+              const SizedBox(height: 20.0),
+              InputField(
+                label: 'Confirm Password',
+                placeHolder: 'Retype Password',
                 value: '',
                 onValueChange: (String value) {},
                 width: double.infinity,
               ),
               const SizedBox(height: 8.0),
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Row(
+                  children: [
+                    Checkbox(value: false, onChanged: (bool? value) {}),
+                    Text('Accept & conditions'),
+                  ],
+                ),
+              ),
+
               Align(
                 alignment: Alignment.centerLeft,
                 child: TextButton(
@@ -69,7 +95,6 @@ class LoginScreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 24.0),
-
               BigButton(
                 text: 'Sign In',
                 onClick: (String) {},
@@ -119,11 +144,10 @@ class LoginScreen extends StatelessWidget {
                   const Text("Don't have an account?"),
                   TextButton(
                     onPressed: () {
-                      // "Sign up" 로직
-                      context.push(Routes.signUpScreen);
+                      context.push(Routes.signInScreen);
                     },
                     child: const Text(
-                      'Sign up',
+                      'Sign In',
                       style: TextStyle(
                         color: Colors.orange,
                         fontWeight: FontWeight.bold,
