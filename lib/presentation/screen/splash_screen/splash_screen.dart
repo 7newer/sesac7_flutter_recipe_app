@@ -12,8 +12,7 @@ class SplashScreen extends StatelessWidget {
         children: <Widget>[
           Positioned.fill(
             child: Image.asset(
-              // 사진 넣고 yaml파일에 등록할것
-              'assets/images/background_vegetables.png',
+              'assets/images/background_vegetables.jpg',
               fit: BoxFit.cover,
             ),
           ),
@@ -33,7 +32,7 @@ class SplashScreen extends StatelessWidget {
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           color: Colors.white,
-                          fontSize: 64,
+                          fontSize: 32,
                           fontWeight: FontWeight.bold,
                           height: 1.0,
                         ),
@@ -78,6 +77,7 @@ class SplashScreen extends StatelessWidget {
     );
   }
 }
+
 void main() async {
   runApp(
     MaterialApp(
