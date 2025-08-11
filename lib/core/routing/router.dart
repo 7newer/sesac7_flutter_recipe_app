@@ -3,6 +3,7 @@ import 'package:flutter_recipe_app/presentation/screen/create_account/create_acc
 import 'package:flutter_recipe_app/presentation/screen/sign_in/sign_in_screen.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../presentation/screen/main_screen.dart';
 import '../../presentation/screen/splash_screen/splash_screen.dart';
 
 final router = GoRouter(
@@ -24,6 +25,12 @@ final router = GoRouter(
       path: Routes.signUpScreen,
       builder: (context, state) {
         return const CreateAccountScreen();
+      },
+    ),
+    GoRoute(
+      path: Routes.mainScreen,
+      builder: (context, state) {
+        return const MainScreen();
       },
     ),
   ],

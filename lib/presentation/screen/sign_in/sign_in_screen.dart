@@ -72,7 +72,9 @@ class LoginScreen extends StatelessWidget {
 
               BigButton(
                 text: 'Sign In',
-                onClick: (String) {},
+                onClick: (String) {
+                  context.go(Routes.mainScreen);
+                },
               ),
               const SizedBox(height: 32.0),
 
@@ -120,7 +122,7 @@ class LoginScreen extends StatelessWidget {
                   TextButton(
                     onPressed: () {
                       // "Sign up" 로직
-                      context.push(Routes.signUpScreen);
+                      context.go(Routes.signUpScreen);
                     },
                     child: const Text(
                       'Sign up',

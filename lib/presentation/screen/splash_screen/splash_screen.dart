@@ -75,7 +75,7 @@ class SplashScreen extends StatelessWidget {
                   BigButton(
                     text: 'Start Cooking',
                     onClick: (String) {
-                      context.push(Routes.signInScreen);
+                      context.go(Routes.signInScreen);
                     },
                   ),
                   const SizedBox(height: 48),

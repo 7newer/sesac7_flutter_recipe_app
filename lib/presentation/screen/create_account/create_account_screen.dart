@@ -144,7 +144,7 @@ class CreateAccountScreen extends StatelessWidget {
                   const Text("Don't have an account?"),
                   TextButton(
                     onPressed: () {
-                      context.push(Routes.signInScreen);
+                      context.go(Routes.signInScreen);
                     },
                     child: const Text(
                       'Sign In',
