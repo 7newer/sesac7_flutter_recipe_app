@@ -6,7 +6,6 @@ import 'package:go_router/go_router.dart';
 
 import '../../data/data_source/recipe_data_source_impl.dart';
 import '../../presentation/screen/create_account/create_account_screen.dart';
-import '../../presentation/screen/main_screen.dart';
 import '../../presentation/screen/saved_screen/saved_recipes_screen.dart';
 import '../../presentation/screen/saved_screen/saved_recipes_view_model.dart';
 import '../../presentation/screen/search_screen/search_recipes_screen.dart';
@@ -56,7 +55,23 @@ final router = GoRouter(
           routes: [
             GoRoute(
               path: Routes.mainScreen,
-              builder: (context, state) => const MainScreen(),
+              //builder: (context, state) => const MainScreen(),
+              builder: (context, state) {
+                final searchRecipesViewModel = SearchRecipesViewModel(
+                  recipeRepository: RecipeRepositoryImpl(
+                    RecipeDataSourceImpl(),
+                  ),
+                );
+                searchRecipesViewModel.fetchSearchRecipes();
+                return ListenableBuilder(
+                  listenable: searchRecipesViewModel,
+                  builder: (context, child) {
+                    return SearchRecipesScreen(
+                      searchRecipesViewModel: searchRecipesViewModel,
+                    );
+                  },
+                );
+              },
             ),
           ],
         ),

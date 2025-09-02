@@ -106,19 +106,3 @@ class _SearchRecipesScreenState extends State<SearchRecipesScreen> {
     );
   }
 }
-
-void main() async {
-  final searchRecipesViewModel = SearchRecipesViewModel(
-    recipeRepository: RecipeRepositoryImpl(
-      RecipeDataSourceImpl(),
-    ),
-  );
-
-  searchRecipesViewModel.fetchSearchRecipes();
-
-  runApp(
-    MaterialApp(
-      home: SearchRecipesScreen(searchRecipesViewModel: searchRecipesViewModel),
-    ),
-  );
-}
