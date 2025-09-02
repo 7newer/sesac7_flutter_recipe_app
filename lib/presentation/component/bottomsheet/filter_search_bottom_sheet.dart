@@ -47,6 +47,8 @@ class _FilterSearchBottomSheetState extends State<FilterSearchBottomSheet> {
           ),
           const SizedBox(height: 10),
           Wrap(
+            spacing: 8.0, // 가로 간격
+            runSpacing: 8.0, // 세로 간격
             children: ['All', 'Newest', 'Oldest', 'Popularity'].map((time) {
               return FilterButton(
                 text: time,
@@ -66,6 +68,8 @@ class _FilterSearchBottomSheetState extends State<FilterSearchBottomSheet> {
           ),
           const SizedBox(height: 10),
           Wrap(
+            spacing: 8.0, // 가로 간격
+            runSpacing: 8.0, // 세로 간격
             children: [5, 4, 3, 2, 1].map((rate) {
               return RatingButton(
                 text: rate.toString(),
@@ -85,6 +89,8 @@ class _FilterSearchBottomSheetState extends State<FilterSearchBottomSheet> {
           ),
           const SizedBox(height: 10),
           Wrap(
+            spacing: 8.0, // 가로 간격
+            runSpacing: 8.0, // 세로 간격
             children:
                 [
                   'All',

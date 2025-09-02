@@ -86,8 +86,15 @@ class _SearchRecipesScreenState extends State<SearchRecipesScreen> {
                   return const Center(child: CircularProgressIndicator());
                 }
                 return GridView.builder(
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 20,
+                    vertical: 10,
+                  ),
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2, // 가로에 2개씩 배치
+                    crossAxisSpacing: 10, // 가로 간격
+                    mainAxisSpacing: 10, // 세로 간격
+                    childAspectRatio: 0.7, // 카드의 비율 (필요에 따라 조절)
                   ),
                   itemCount: widget.searchRecipesViewModel.state.filteredRecipes.length,
                   itemBuilder: (context, index) {

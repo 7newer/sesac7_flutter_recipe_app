@@ -1,48 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_recipe_app/presentation/component/inputfield/search_input_field.dart';
+import 'package:flutter_recipe_app/presentation/component/button/filter_button.dart';
 
-import '../component/button/filter_button.dart';
+void main() {
+  runApp(const MyApp());
+}
 
-class InputField extends StatelessWidget {
-  final String label;
-  final String placeHolder;
-
-  const InputField({
-    super.key,
-    required this.label,
-    required this.placeHolder,
-  });
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Container(
-        height: 50,
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(15),
-          border: Border.all(color: Colors.grey.shade300),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey.withOpacity(0.1),
-              spreadRadius: 1,
-              blurRadius: 5,
-              offset: const Offset(0, 3),
-            ),
-          ],
-        ),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16.0),
-          child: Row(
-            children: [
-              const Icon(Icons.search, color: Colors.grey),
-              const SizedBox(width: 10),
-              Expanded(
-                child: SearchInputField(onValueChange: (String value) {}),
-              ),
-            ],
-          ),
-        ),
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: const MainScreen(),
+      theme: ThemeData(
+        scaffoldBackgroundColor: Colors.grey.shade100,
       ),
     );
   }
@@ -131,43 +104,43 @@ class _MainScreenState extends State<MainScreen> {
           ),
         ),
       ),
-      // bottomNavigationBar: Theme(
-      //   data: ThemeData(
-      //     splashColor: Colors.transparent,
-      //     highlightColor: Colors.transparent,
-      //     hoverColor: Colors.transparent,
-      //   ),
-      //   child: BottomNavigationBar(
-      //     onTap: (int index) {
-      //       setState(() {
-      //         _selectedIndex = index;
-      //       });
-      //     },
-      //     selectedItemColor: Colors.green,
-      //     unselectedItemColor: Colors.grey,
-      //     type : BottomNavigationBarType.fixed,
-      //     items: const [
-      //       BottomNavigationBarItem(
-      //         backgroundColor: Colors.white,
-      //         icon: Icon(Icons.home),
-      //         label: '',
-      //       ),
-      //       BottomNavigationBarItem(
-      //         icon: Icon(Icons.bookmark),
-      //         label: '',
-      //       ),
-      //       BottomNavigationBarItem(
-      //         icon: Icon(Icons.alarm),
-      //         label: '',
-      //       ),
-      //       BottomNavigationBarItem(
-      //         icon: Icon(Icons.person),
-      //         label: '',
-      //       ),
-      //     ],
-      //     currentIndex: _selectedIndex,
-      //   ),
-      // ),
+      bottomNavigationBar: Theme(
+        data: ThemeData(
+          splashColor: Colors.transparent,
+          highlightColor: Colors.transparent,
+          hoverColor: Colors.transparent,
+        ),
+        child: BottomNavigationBar(
+          onTap: (int index) {
+            setState(() {
+              _selectedIndex = index;
+            });
+          },
+          selectedItemColor: Colors.green,
+          unselectedItemColor: Colors.grey,
+          type: BottomNavigationBarType.fixed,
+          items: const [
+            BottomNavigationBarItem(
+              backgroundColor: Colors.white,
+              icon: Icon(Icons.home),
+              label: '',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.bookmark),
+              label: '',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.alarm),
+              label: '',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.person),
+              label: '',
+            ),
+          ],
+          currentIndex: _selectedIndex,
+        ),
+      ),
     );
   }
 }

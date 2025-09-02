@@ -21,6 +21,8 @@ class FilterButton extends StatelessWidget {
       child: Container(
         //padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
         //margin: const EdgeInsets.only(right: 8, bottom: 8),
+        width: 80, // 원하는 너비로 설정
+        height: 35, // 원하는 높이로 설정
         decoration: BoxDecoration(
           color: isSelected ? AppColors.primary100 : Colors.transparent,
           borderRadius: BorderRadius.circular(10.0),
